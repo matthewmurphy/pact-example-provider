@@ -1,0 +1,9 @@
+node_modules/
+out/
+coverage/
+dist/
+gen/
+charts/**/*.tgz
+
+# macOS
+.DS_Store

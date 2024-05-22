@@ -1,0 +1,11 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "skipLibCheck": true,
+    "paths": {
+      "@matthewmurphy/pact-example-client": ["../gen/clients/typescript-axios/dist"]
+    }
+  },
+  "include": ["./*.ts", "./**/*.ts"]
+}

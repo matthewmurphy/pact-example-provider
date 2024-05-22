@@ -1,0 +1,172 @@
+openapi: 3.1.0
+info:
+  title: OpenAPI Sample
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /health/readiness:
+    get:
+      operationId: getHealthReadiness
+      summary: Health Readiness
+      description: Get health readiness status
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  healthy:
+                    type: boolean
+  /test01:
+    get:
+      operationId: getTest01
+      summary: GET for a test endpoint
+      description: GET for a test endpoint
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  foo:
+                    type: string
+  /test02:
+    get:
+      operationId: getTest02
+      summary: GET for a test endpoint
+      description: GET for a test endpoint
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  foo:
+                    type: string
+  /test03:
+    get:
+      operationId: getTest03
+      summary: GET for a test endpoint
+      description: GET for a test endpoint
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  foo:
+                    type: string
+  /test04:
+    get:
+      operationId: getTest04
+      summary: GET for a test endpoint
+      description: GET for a test endpoint
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  foo:
+                    type: string
+  /test05:
+    get:
+      operationId: getTest05
+      summary: GET for a test endpoint
+      description: GET for a test endpoint
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  foo:
+                    type: string
+  /test06:
+    get:
+      operationId: getTest06
+      summary: GET for a test endpoint
+      description: GET for a test endpoint
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  foo:
+                    type: string
+  /test07:
+    get:
+      operationId: getTest07
+      summary: GET for a test endpoint
+      description: GET for a test endpoint
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  foo:
+                    type: string
+  /test08:
+    get:
+      operationId: getTest08
+      summary: GET for a test endpoint
+      description: GET for a test endpoint
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  foo:
+                    type: string
+  /test09:
+    get:
+      operationId: getTest09
+      summary: GET for a test endpoint
+      description: GET for a test endpoint
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  foo:
+                    type: string
+  /test10:
+    get:
+      operationId: getTest10
+      summary: GET for a test endpoint
+      description: GET for a test endpoint
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  foo:
+                    type: string

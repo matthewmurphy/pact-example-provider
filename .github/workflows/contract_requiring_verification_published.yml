@@ -1,0 +1,66 @@
+name: contract_requiring_verification_published
+
+# This workflow leverages the https://docs.pact.io/pact_broker/webhooks#the-contract-requiring-verification-published-event webhook
+
+on:
+  repository_dispatch:
+    types:
+      - contract_requiring_verification_published
+  workflow_dispatch:
+    inputs:
+      PACT_URL:
+        description: URL of pact to verify
+        required: true
+      PACT_BROKER_URL:
+        required: true
+      PACT_BROKER_PUBLISH_VERIFICATION_RESULTS:
+        required: true
+      GIT_COMMIT:
+        required: true
+      GIT_BRANCH:
+        required: true
+      DESCRIPTION:
+        required: true
+
+jobs:
+  verify-contract-requiring-verification:
+    runs-on: ubuntu-latest
+    steps:
+      - name: event
+        run: echo "${{github.event}}"
+      - name: pact_url
+        run: echo "${{github.event.client_payload.pact_url}}"
+      - name: sha
+        run: echo "${{github.event.client_payload.sha}}"
+      - name: branch
+        run: echo "${{github.event.client_payload.branch}}"
+      - name: description
+        run: echo "${{github.event.client_payload.message}}"
+
+      - name: checkout specific SHA if webhook providers pact URL
+        uses: actions/checkout@v4
+        if: ${{ github.event.client_payload.pact_url }}
+        with:
+          ref: ${{ env.client_payload.sha }}
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: "npm"
+          node-version-file: ".nvmrc"
+
+      - name: NPM install
+        run: npm install
+
+      - name: Compile to JavaScript
+        run: npm run build
+
+      - name: Pact - Provider verify pact from webhook
+        run: npm run pact:provider
+        env:
+          USE_PACTFLOW: true
+          PACT_URL: ${{ github.event.client_payload.pact_url }}
+          BRANCH_NAME: ${{ github.ref }}
+          PACT_BROKER_TOKEN: ${{ secrets.PACT_BROKER_TOKEN }}
+          PROVIDER_VERSION: ${{ github.event.client_payload.sha }}
+          PUBLISH_VERIFICATION_RESULTS: true
